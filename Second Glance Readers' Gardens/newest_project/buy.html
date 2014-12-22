@@ -1,0 +1,300 @@
+<html>
+
+	<head>
+		<title>Second Glance Book Publishers</title>
+		
+		<link href="style.css" rel="stylesheet" type="text/css" />
+
+		<script type = "text/javascript">
+	
+		function validate()
+	 	 {
+			var x=document.forms["buy"]["name"].value;
+			var y=document.forms["buy"]["tp"].value;
+			var y=document.forms["buy"]["address"].value;
+
+			
+			if (x.length == 0 || y.length == 0 || z.length == 0 )
+ 			 {
+  				alert("All the fields are required to fill");
+  				return false;
+ 			 }
+			
+		  }
+		
+	</script>
+
+	</head>
+
+	<body>
+		<div id="container">
+
+  <!-- start of menu -->
+  			<div id="menu">
+    				<ul>
+      					<li><a href="home.html" class="current">Home</a></li>
+					<li><a href="subpage.html">Publications</a></li>
+      					<li><a href="new.html">New Releases</a></li>
+      					<li><a href="about.html">About Us</a></li>
+      					<li><a href="services.html">Our Services</a></li>
+      					<li><a href="histry.html">History</a></li>
+      					<li><a href="gallery.html">Gallery</a></li>
+      					<li><a href="contact.html">Contact Us</a></li>
+					<li><a href="comment.html">Comment</a></li>
+    				</ul>
+
+  			</div>
+  <!-- end of menu -->
+
+ <!-- start of header -->
+
+  			<div id="header">
+    				<div id="special_offers">
+      					<p> <span>25%</span> discounts for the reading- month October </p>
+      					<a href="readermonth.html" style="margin-left: 50px;">Read more...</a>
+				</div>
+
+    				<div id="new_books">
+      					<ul>
+        					<li>Science Fictions</li>
+        					<li>Politics</li>
+        					<li>Encyclopedia</li>
+      					</ul>
+
+      					<a href="new.html" style="margin-left: 50px;">Read more...</a> </div>
+
+  				</div>
+  <!-- end of header -->
+
+
+
+  			<div id="content">
+
+				<form name="booksearch">
+					<font color=" #e6e154" size="5pt">Search  </font>
+					
+					
+					<input type="text" name="search" size="70"/></span>
+					<input type="submit" value="Go" style="color:Black"/>
+											
+				</form>
+
+				<div class="cleaner_with_height">&nbsp;</div>
+				
+<!-- start of content left -->
+    				<div id="content_left">
+      					<div class="content_left_section">
+						<a href="login.html"><h1>Login</h1></a>
+						<a href="register.html"><h1>Create an Account</h1></a>
+        					<h1>Categories</h1>
+        					
+						<ul>
+          
+							<li><a href="fairy.html">Fairy Tales</a></li>
+							<li><a href="novel.html">Novels</a></li>
+          						<li><a href="translation.html">Translations</a></li>
+          						<li><a href="historys.html">History</a></li>
+          						<li><a href="info.html">Information Technology</a></li>
+          						
+       
+						 </ul>
+      					</div>
+      
+
+					<div class="content_left_section">
+        					<h1>Bestsellers</h1>
+        					
+						<ul>
+
+          						<li><a href="harry.html">Harry potter</a></li>
+          						<li><a href="lord.html">Lord of the Rings</a></li>
+          						<li><a href="emma.html">Emma</a></li>
+          						<li><a href="ds.html">Data Structures and Algorithm</a></li>
+          						<li><a href="wd.html">Web Design</a></li>
+          						
+       
+						 </ul>
+      					</div>
+
+
+      					<div class="content_left_section"> 
+						<a href="http://www.macmillan.com/">
+							<img style="border:0;width:88px;height:70px" src="images\mac.gif" alt="" width="88" height="31" vspace="8" border="0" />
+						</a> 
+
+						<a href="http://www.samayaprinters.com/">
+							<img style="border:0;width:88px;height:70px"  src="images\sam.gif" alt="" vspace="8" border="0" />
+						</a> 
+					</div>
+<div class="image_panel"><img src="images/boo.jpg" alt="" width="200" height="267" /></div>
+
+
+    				</div>
+    
+<!-- end of content left -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div id="content_right">
+
+
+      					
+					<div class="product_register" >
+        					<h1>Billing Address </h1>
+      				 	<img src="buy.jpg" alt="" /></br> </br>
+
+        					<div class="product_info">
+          					
+          					<form  action="credit.html" name = "buy" method="post" onsubmit = "return validate()" >
+
+					<table summary="Demonstration form">
+					<tr> <td>
+					Name</td> <td> <input type = "text" name ="name"/> </td></tr>
+					<tr> <td>
+					Telephone: </td> <td> <input type = "text" name ="tp"/> </td></tr>
+					<tr> <td>
+					Address  </td> <td> <input type = "text" name ="address"/> </td></tr>
+					<tr> <td>
+					Country  </td> <td>
+					<select  name="select" size="1" onChange ="formHandler()" >
+
+                				<option       >Sri-lanka	
+					<option      selected="selected"    >India
+					<option         >Japan
+					<option       >China
+					<option       >UK
+					<option       >USA
+					<option       >Alaska
+
+					</select> </td></tr>
+
+					<tr> <td>
+					Select the book you want to buy  </td> <td>
+					<select  name="select" size="1" onChange ="formHandler()" >
+
+                				<option       >ADURA WINIVIDA-550.00
+					<option         >ATHTHA HARIMA THITHTHAY-300.00
+					<option         >AUSHADHA PALETY -48.00
+					<option       >BIRIDA - NEWS PAPER-30.00
+					<option       >BOJANA SANGRAHAYA-60.00
+					<option       >BRIDES - MAGAZINE-300.00
+					<option       >'CHARAKA SANHITHAWA-2550.00
+					<option       >COMPUTER BOOKS-500.00
+					<option       >DREAMLAND`S BASIC SCIENCE -270.00
+					<option       >FRANK PRIMARY SCIENCE -248.00
+					<option       >GETUMAKA SULAMULA-150.00
+					<option       >GODANEGILI DRAVYA-200.00
+					<option       >GROUNDVIEW - MAGAZINE-200.00
+					<option       >GRUHA NIRMANA SHILPAYA-500.00
+					<option       selected="selected" >HARRY POTTER-2570.00
+					<option       >DATASTRUCTURES-1450.00
+					<option       >GARDENING-890.00
+					<option       >HISTORY-790.00
+					<option       >GOLDEN FAIRY TALES-1300.00
+					<option       >THE REAL MOTHER GOOSE-1500.00
+					<option       >THE GIANT GOLDEN BOOK OF ELVES-1150.00
+					<option       >LITTLE RED RIDDING HOOD-790.00
+					<option       >THE LAUGHTER AND THE WIND-1000.00
+					<option       >THE MOON IN DEEP WINTER-2300.00
+					<option       >TWILIGHT-2000.00
+					<option       >TO THE END OF THE LAND-790.00
+					<option       >THE NAME OF THE ROSE-3600.00
+					<option       >OF LOVE AND OTHER DEMONS-800.00
+					<option       >LIKE WATER FOR CHOCOLATE-2500.00
+					<option       >SURVIVAL IN AUSCHWITZ-2000.00
+					
+
+					</select> </td></tr>
+
+					<tr> <td>
+        					<input type = "submit" value = "Continue"/> </td></tr>
+					</table>
+
+             					</form>
+       			 		</div>
+
+        					<div class="cleaner">&nbsp;</div>
+      					</div>
+
+      					<div class="cleaner_with_height">&nbsp;</div>
+
+
+      					<div class="cleaner_with_height">&nbsp;</div>
+					<div class="cleaner_with_height">&nbsp;</div>
+					<div class="cleaner_with_height">&nbsp;</div>
+
+					<center><div class="cleaner">&nbsp;</div>
+					<div class="image_panel"><img src="images/im1.jpg" alt="" width="115" height="100" /></div>
+					<div class="image_panel"><img src="images/im2.jpg" alt="" width="115" height="100" /></div>				
+					<div class="image_panel"><img src="images/im3.jpg" alt="" width="115" height="100" /></div>				
+					<div class="image_panel"><img src="images/im5.jpg" alt="" width="115" height="100" /></div>									
+					<div class="image_panel"><img src="images/bo.jpg" alt="" width="115" height="100" /></div>								
+      					</center>
+					<a href="http://www.vijithayapa.com/"><img src="images/ad1s.jpg" alt="ads" /></a> 
+				</div>
+    
+<!-- end of content right -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    				<div class="cleaner_with_height">&nbsp;</div>
+				
+  			</div>
+ 
+<!-- end of content -->
+
+
+ <!-- start of footer -->  
+	
+			<div id="footer"> <a href="home.html">Home</a> | <a href="about.html">About</a> | <a href="publication.html">Books</a> | <a href="new.html">New Arrivals</a> | <a href="faq.html">FAQs</a> | <a href="contact.html">Contact Us</a><br />
+
+    			Copyright &copy; 2012 <a href="http://www.creata.com/"><strong>Second Glance Readers' Gardens</strong></a> | Designed by <a href="http://www.w3school.com">CREATA</a> </div>
+ <!-- end of footer -->
+		
+		</div>
+
+<!-- end of container -->
+
+	</body>
+
+</html>

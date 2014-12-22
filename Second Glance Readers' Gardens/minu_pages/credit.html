@@ -1,0 +1,536 @@
+<html>
+
+	<head>
+		<title>Second Glance Book Publishers</title>
+		
+		<link href="style.css" rel="stylesheet" type="text/css" />
+
+		<script type = "text/javascript">
+	
+		function validate()
+	 	 {
+			var x=document.forms["buy"]["credit"].value;
+			var y=document.forms["buy"]["date"].value;
+			var z=document.forms["buy"]["cvv"].value;
+			var q=document.forms["buy"]["amount"].value;
+
+			
+			if (x.length == 0 || y.length == 0 || z.length == 0 )
+ 			 {
+  				alert("All the fields are required to fill");
+  				return false;
+ 			 }
+
+	else{		
+			var validformat=/^\d{2}\/\d{2}\/\d{4}$/ //Basic check for format validity
+			var returnval=false
+
+			if (!validformat.test(y.value)){
+				alert("Invalid Date Format. Please correct and submit again.")
+				return false;
+			}
+			
+
+
+
+
+function checkCardNumber() {
+var argv = checkCardNumber.arguments;
+var argc = checkCardNumber.arguments.length;
+var cardnumber = (argc > 0) ? argv[0] : this.cardnumber;
+var year = (argc > 1) ? argv[1] : this.year;
+var month = (argc > 2) ? argv[2] : this.month;
+
+this.setCardNumber(cardnumber);
+this.setExpiryDate(year, month);
+
+if (!this.isCardNumber())
+return false;
+if (!this.isExpiryDate())
+return false;
+
+return true;
+}
+/*************************************************************************\
+String getCardType()
+return the cardtype.
+\*************************************************************************/
+function getCardType() {
+return this.cardtype;
+}
+/*************************************************************************\
+String getExpiryDate()
+return the expiry date.
+\*************************************************************************/
+function getExpiryDate() {
+return this.month + "/" + this.year;
+}
+/*************************************************************************\
+boolean isCardNumber([String cardnumber])
+return true if cardnumber pass the luhncheck and the rules, else return
+false.
+\*************************************************************************/
+function isCardNumber() {
+var argv = isCardNumber.arguments;
+var argc = isCardNumber.arguments.length;
+var cardnumber = (argc > 0) ? argv[0] : this.cardnumber;
+if (!this.luhnCheck())
+return false;
+
+for (var n = 0; n < this.len.size; n++)
+if (cardnumber.toString().length == this.len[n]) {
+for (var m = 0; m < this.rules.size; m++) {
+var headdigit = cardnumber.substring(0, this.rules[m].toString().length);
+if (headdigit == this.rules[m])
+return true;
+}
+return false;
+}
+return false;
+}
+
+/*************************************************************************\
+boolean isExpiryDate([int year, int month])
+return true if the date is a valid expiry date,
+else return false.
+\*************************************************************************/
+function isExpiryDate() {
+var argv = isExpiryDate.arguments;
+var argc = isExpiryDate.arguments.length;
+
+year = argc > 0 ? argv[0] : this.year;
+month = argc > 1 ? argv[1] : this.month;
+
+if (!isNum(year+""))
+return false;
+if (!isNum(month+""))
+return false;
+today = new Date();
+expiry = new Date(year, month);
+if (today.getTime() > expiry.getTime())
+return false;
+else
+return true;
+}
+
+/*************************************************************************\
+boolean isNum(String argvalue)
+return true if argvalue contains only numeric characters,
+else return false.
+\*************************************************************************/
+function isNum(argvalue) {
+argvalue = argvalue.toString();
+
+if (argvalue.length == 0)
+return false;
+
+for (var n = 0; n < argvalue.length; n++)
+if (argvalue.substring(n, n+1) < "0" || argvalue.substring(n, n+1) > "9")
+return false;
+
+return true;
+}
+
+/*************************************************************************\
+boolean luhnCheck([String CardNumber])
+return true if CardNumber pass the luhn check else return false.
+Reference: http://www.ling.nwu.edu/~sburke/pub/luhn_lib.pl
+\*************************************************************************/
+function luhnCheck() {
+var argv = luhnCheck.arguments;
+var argc = luhnCheck.arguments.length;
+
+var CardNumber = argc > 0 ? argv[0] : this.cardnumber;
+
+if (! isNum(CardNumber)) {
+return false;
+  }
+
+var no_digit = CardNumber.length;
+var oddoeven = no_digit & 1;
+var sum = 0;
+
+for (var count = 0; count < no_digit; count++) {
+var digit = parseInt(CardNumber.charAt(count));
+if (!((count & 1) ^ oddoeven)) {
+digit *= 2;
+if (digit > 9)
+digit -= 9;
+}
+sum += digit;
+}
+if (sum % 10 == 0)
+return true;
+else
+return false;
+}
+
+/*************************************************************************\
+ArrayObject makeArray(int size)
+return the array object in the size specified.
+\*************************************************************************/
+function makeArray(size) {
+this.size = size;
+return this;
+}
+
+/*************************************************************************\
+CardType setCardNumber(cardnumber)
+return the CardType object.
+\*************************************************************************/
+function setCardNumber(cardnumber) {
+this.cardnumber = cardnumber;
+return this;
+}
+
+/*************************************************************************\
+CardType setCardType(cardtype)
+return the CardType object.
+\*************************************************************************/
+function setCardType(cardtype) {
+this.cardtype = cardtype;
+return this;
+}
+
+/*************************************************************************\
+CardType setExpiryDate(year, month)
+return the CardType object.
+\*************************************************************************/
+function setExpiryDate(year, month) {
+this.year = year;
+this.month = month;
+return this;
+}
+
+/*************************************************************************\
+CardType setLen(len)
+return the CardType object.
+\*************************************************************************/
+function setLen(len) {
+// Create the len array.
+if (len.length == 0 || len == null)
+len = "13,14,15,16,19";
+
+var tmplen = len;
+n = 1;
+while (tmplen.indexOf(",") != -1) {
+tmplen = tmplen.substring(tmplen.indexOf(",") + 1, tmplen.length);
+n++;
+}
+this.len = new makeArray(n);
+n = 0;
+while (len.indexOf(",") != -1) {
+var tmpstr = len.substring(0, len.indexOf(","));
+this.len[n] = tmpstr;
+len = len.substring(len.indexOf(",") + 1, len.length);
+n++;
+}
+this.len[n] = len;
+return this;
+}
+
+/*************************************************************************\
+CardType setRules()
+return the CardType object.
+\*************************************************************************/
+function setRules(rules) {
+// Create the rules array.
+if (rules.length == 0 || rules == null)
+rules = "0,1,2,3,4,5,6,7,8,9";
+  
+var tmprules = rules;
+n = 1;
+while (tmprules.indexOf(",") != -1) {
+tmprules = tmprules.substring(tmprules.indexOf(",") + 1, tmprules.length);
+n++;
+}
+this.rules = new makeArray(n);
+n = 0;
+while (rules.indexOf(",") != -1) {
+var tmpstr = rules.substring(0, rules.indexOf(","));
+this.rules[n] = tmpstr;
+rules = rules.substring(rules.indexOf(",") + 1, rules.length);
+n++;
+}
+this.rules[n] = rules;
+return this;
+}
+//  End -->
+
+
+
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+			
+			
+			
+			
+		  }
+		
+	</script>
+
+	</head>
+
+	<body>
+		<div id="container">
+
+  <!-- start of menu -->
+  			<div id="menu">
+    				<ul>
+      					<li><a href="home.html" class="current">Home</a></li>
+					<li><a href="subpage.html">Publications</a></li>
+      					<li><a href="new.html">New Releases</a></li>
+      					<li><a href="about.html">About Us</a></li>
+      					<li><a href="services.html">Our Services</a></li>
+      					<li><a href="histry.html">History</a></li>
+      					<li><a href="gallery.html">Gallery</a></li>
+      					<li><a href="contact.html">Contact Us</a></li>
+					<li><a href="comment.html">Comment</a></li>
+    				</ul>
+
+  			</div>
+  <!-- end of menu -->
+
+ <!-- start of header -->
+
+  			<div id="header">
+    				<div id="special_offers">
+      					<p> <span>25%</span> discounts for the reading- month October </p>
+      					<a href="readermonth.html" style="margin-left: 50px;">Read more...</a>
+				</div>
+
+    				<div id="new_books">
+      					<ul>
+        					<li>Science Fictions</li>
+        					<li>Politics</li>
+        					<li>Encyclopedia</li>
+      					</ul>
+
+      					<a href="new.html" style="margin-left: 50px;">Read more...</a> </div>
+
+  				</div>
+  <!-- end of header -->
+
+
+
+  			<div id="content">
+
+				<form  action="search.php" name = "login" method="post" onsubmit = "return validate()" >
+					<font color=" #e6e154" size="4pt">Search  </font>
+					
+					
+					<select  name="select" size="1" onChange ="formHandler()" >
+
+                					
+					<option      selected="selected"    >History
+					<option         >Sociology
+					<option       >Health
+					<option       >Science/Environmental
+					<option       >Sinhala
+					<option       >English
+
+					</select>	
+
+        					<input type = "submit" name="submit" value = "Go"/>
+			
+					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+					<input type = "checkbox" name = "checkbox" value = "checkbox"  />
+					<font color=" #e6e154" size="2.5pt">Yes, please send me newsletters   </font>						
+					
+					<input type = "text" name = "letters" value="amodha@gmail.com" size=25 />
+
+					<input type = "submit" name = "subscribe" value = "subscribe" />			
+				</form>
+
+				<div class="cleaner_with_height">&nbsp;</div>
+				
+<!-- start of content left -->
+    				<div id="content_left">
+      					<div class="content_left_section">
+						<a href="login.html"><h1>Login</h1></a>
+						<a href="register.html"><h1>Create an Account</h1></a>
+        					<h1>Categories</h1>
+        					
+						<ul>
+          
+							<li><a href="fairy.html">Fairy Tales</a></li>
+							<li><a href="novel.html">Novels</a></li>
+          						<li><a href="translation.html">Translations</a></li>
+          						<li><a href="historys.html">History</a></li>
+          						<li><a href="info.html">Information Technology</a></li>
+          						
+       
+						 </ul>
+      					</div>
+      
+
+					<div class="content_left_section">
+        					<h1>Bestsellers</h1>
+        					
+						<ul>
+
+          						<li><a href="harry.html">Harry potter</a></li>
+          						<li><a href="lord.html">Lord of the Rings</a></li>
+          						<li><a href="emma.html">Emma</a></li>
+          						<li><a href="ds.html">Data Structures and Algorithm</a></li>
+          						<li><a href="wd.html">Web Design</a></li>
+          						
+       
+						 </ul>
+      					</div>
+
+
+      					<div class="content_left_section"> 
+						<a href="http://www.macmillan.com/">
+							<img style="border:0;width:88px;height:70px" src="images\mac.gif" alt="" width="88" height="31" vspace="8" border="0" />
+						</a> 
+
+						<a href="http://www.samayaprinters.com/">
+							<img style="border:0;width:88px;height:70px"  src="images\sam.gif" alt="" vspace="8" border="0" />
+						</a> 
+					</div>
+<div class="image_panel"><img src="images/boo.jpg" alt="" width="200" height="267" /></div>
+
+
+    				</div>
+    
+<!-- end of content left -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div id="content_right">
+
+
+      					
+					<div class="product_register" >
+        					<h1>Credit Card </h1>
+      				 	<img src="credit.jpg" alt="" /></br> </br>
+
+        					<div class="product_info">
+          					
+          					<form  action="delivery.html" name = "buy" method="post" onsubmit = "return validate()" >
+
+					<table summary="Demonstration form" >
+					<tr> <td>
+					Card Number: </td> <td><input name="CardNumber" size="16" maxlength="19"></td></tr>
+					<tr> <td>
+					Card Type: </td><td>
+					<select name="CardType">
+					<option value="MasterCard">MasterCard
+					<option value="VisaCard">Visa
+					<option value="AmExCard">American Express
+					<option value="DinersClubCard">Diners Club
+					<option value="DiscoverCard">Discover
+					<option value="enRouteCard">enRoute
+					<option value="JCBCard">JCB
+					</select> </td></tr>
+					<tr> <td>
+					Expiration Date </td> <td> <input type = "text" name ="date"/><font size="1">mm/dd/yyyy </td></tr>
+					<tr> <td>
+					CVV Code  </td> <td> <input type = "text" name ="cvv"/> </td></tr>
+					
+
+					<tr> <td>
+        					<input type = "submit" value = "Check out"/> </td></tr>
+					</table>
+
+             					</form>
+       			 		</div>
+
+        					<div class="cleaner">&nbsp;</div>
+      					</div>
+
+      					<div class="cleaner_with_height">&nbsp;</div>
+
+
+      					<div class="cleaner_with_height">&nbsp;</div>
+					<div class="cleaner_with_height">&nbsp;</div>
+					<div class="cleaner_with_height">&nbsp;</div>
+
+					<center><div class="cleaner">&nbsp;</div>
+					<div class="image_panel"><img src="images/im1.jpg" alt="" width="115" height="100" /></div>
+					<div class="image_panel"><img src="images/im2.jpg" alt="" width="115" height="100" /></div>				
+					<div class="image_panel"><img src="images/im3.jpg" alt="" width="115" height="100" /></div>				
+					<div class="image_panel"><img src="images/im5.jpg" alt="" width="115" height="100" /></div>									
+					<div class="image_panel"><img src="images/bo.jpg" alt="" width="115" height="100" /></div>								
+      					</center>
+					<a href="http://www.vijithayapa.com/"><img src="images/ad1s.jpg" alt="ads" /></a> 
+				</div>
+    
+<!-- end of content right -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    				<div class="cleaner_with_height">&nbsp;</div>
+				
+  			</div>
+ 
+<!-- end of content -->
+
+
+ <!-- start of footer -->  
+	
+			<div id="footer"> <a href="home.html">Home</a> | <a href="about.html">About</a> | <a href="subpage.html">Books</a> | <a href="new.html">New Arrivals</a> | <a href="faq.html">FAQs</a> | <a href="contact.html">Contact Us</a><br />
+
+    			Copyright &copy; 2012 <a href="http://www.creata.com/"><strong>Second Glance Readers' Gardens</strong></a> | Designed by <a href="http://www.w3school.com">CREATA</a> </div>
+ <!-- end of footer -->
+		
+		</div>
+
+<!-- end of container -->
+
+	</body>
+
+</html>
